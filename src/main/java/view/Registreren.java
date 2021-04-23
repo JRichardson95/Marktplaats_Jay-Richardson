@@ -22,17 +22,15 @@ public class Registreren {
     public void nieuweGebruiker() {
         GebruikersDao gebruikersDao = new GebruikersDao(em);
 
-        printLine();
-        System.out.println("Registreren nieuwe gebruiker");
-        printLine();
+        header("Registreren nieuwe gebruiker");
 
-        System.out.print("Voornaam:");
+        print("Voornaam:");
         nieuweGebruiker.setVoornaam(readLine());
-        System.out.print("Achternaam:");
+        print("Achternaam:");
         nieuweGebruiker.setAchternaam(readLine());
-        System.out.print("Email:");
+        print("Email:");
         nieuweGebruiker.setEmail(readLine());
-        printLine();
+        divider();
 
         nieuweGebruiker.setBezorgwijzeSet(bezorgWijze());
 
@@ -44,13 +42,13 @@ public class Registreren {
 
         gebruikersDao.save(nieuweGebruiker);
 
-        System.out.println(nieuweGebruiker);
+        println(nieuweGebruiker.toString());
 
         new BeginScherm().start();
     }
 
     public Set<Bezorgwijze> bezorgWijze() {
-        System.out.println("Welke bezorgwijze wilt u ondersteunen?");
+        println("Welke bezorgwijze wilt u ondersteunen?");
         Arrays.asList(Bezorgwijze.values()).forEach(System.out::println);
         return bezorgwijzeSet(readLine());
     }
@@ -73,10 +71,10 @@ public class Registreren {
     }
 
     private void printBezorgwijze() {
-        printLine();
-        System.out.println("U heeft de volgende bezorgwijzen geselecteerd:");
+        divider();
+        println("U heeft de volgende bezorgwijzen geselecteerd:");
         nieuweGebruiker.getBezorgwijzeSet().forEach(System.out::println);
-        printLine();
+        divider();
     }
 
     public void adresVragen(){
@@ -90,17 +88,17 @@ public class Registreren {
 
     public Adres adresPrompt() {
         Adres adres = new Adres();
-        System.out.println("U heeft als bezorgwijze \"Thuis afhalen\" geselecteerd.");
-        System.out.println("Adres: ");
-        System.out.print("    Straat: ");
+        println("U heeft als bezorgwijze \"Thuis afhalen\" geselecteerd.");
+        println("Adres: ");
+        print("    Straat: ");
         adres.setStraat(readLine());
-        System.out.print("    Huisnummer: ");
+        print("    Huisnummer: ");
         adres.setHuisnummer(Integer.parseInt(readLine()));
-        System.out.print("    Postcode: ");
+        print("    Postcode: ");
         adres.setPostcode(postcode(readLine()));
-        System.out.print("    Stad: ");
+        print("    Stad: ");
         adres.setStad(readLine());
-        System.out.print("    Provincie: ");
+        print("    Provincie: ");
         adres.setProvincie(readLine());
         return adres;
     }

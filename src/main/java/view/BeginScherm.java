@@ -13,13 +13,12 @@ public class BeginScherm {
     }
 
     public void prompt() {
-        printLine();
-        System.out.println("Welkom op marktplaats");
+        header("Welkom op marktplaats");
         System.out.println("Wat wilt u doen:");
         System.out.println("" +
                 "1: registreren\n" +
                 "2: inloggen");
-        printLine();
+        divider();
     }
 
     public void naarVolgendScherm(int input) {
@@ -28,10 +27,10 @@ public class BeginScherm {
                 new Registreren().nieuweGebruiker();
                 break;
             case 2:
-                System.out.println("test");
-                start();
+                new Inloggen().start();
                 break;
             default:
+                System.out.println("Verkeerde input");
                 start();
 
         }
