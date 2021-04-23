@@ -1,23 +1,15 @@
 package view;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 
 public class BeginScherm {
+    private final View view = new View();
     public static void main(String[] args){
         new BeginScherm().start();
     }
-    View view = new View();
+
     public void start() {
-
-        BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
         prompt();
-        try {
-            new BeginScherm().naarVolgendScherm(Integer.parseInt(read.readLine()));
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-
+        new BeginScherm().naarVolgendScherm(Integer.parseInt(view.readLine()));
     }
 
     private void prompt() {
@@ -41,7 +33,7 @@ public class BeginScherm {
                 break;
             default:
                 start();
-                ;
+
         }
     }
 
