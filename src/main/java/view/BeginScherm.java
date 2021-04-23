@@ -12,7 +12,7 @@ public class BeginScherm {
         new BeginScherm().naarVolgendScherm(Integer.parseInt(readLine()));
     }
 
-    private void prompt() {
+    public void prompt() {
         printLine();
         System.out.println("Welkom op marktplaats");
         System.out.println("Wat wilt u doen:");

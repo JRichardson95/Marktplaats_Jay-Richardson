@@ -24,6 +24,7 @@ public class Registreren {
     }
 
     public void nieuweGebruiker() {
+        GebruikersDao gebruikersDao = new GebruikersDao(em);
 
         printLine();
         System.out.println("Registreren nieuwe gebruiker");
@@ -46,12 +47,12 @@ public class Registreren {
 
         nieuweGebruiker.setStatus(Status.ACTIEF);
 
-        GebruikersDao gebruikersDao = new GebruikersDao(em);
+
         gebruikersDao.save(nieuweGebruiker);
 
         System.out.println(nieuweGebruiker);
 
-        new BeginScherm();
+        new BeginScherm().start();
     }
 
     public Set<Bezorgwijze> bezorgWijze() {
