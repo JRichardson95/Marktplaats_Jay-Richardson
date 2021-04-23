@@ -42,11 +42,8 @@ public class Registreren {
 
         printBezorgwijze();
 
-        if (adresVragen){
-            nieuweGebruiker.setAdres(adresPrompt());
-        }else{
-            nieuweGebruiker.setAdres(new Adres());
-        }
+        adresVragen();
+
         nieuweGebruiker.setStatus(Status.ACTIEF);
 
         GebruikersDao gebruikersDao = new GebruikersDao(em);
@@ -85,6 +82,14 @@ public class Registreren {
         System.out.println("U heeft de volgende bezorgwijzen geselecteerd:");
         nieuweGebruiker.getBezorgwijzeSet().forEach(System.out::println);
         printLine();
+    }
+
+    public void adresVragen(){
+        if (adresVragen){
+            nieuweGebruiker.setAdres(adresPrompt());
+        }else{
+            nieuweGebruiker.setAdres(new Adres());
+        }
     }
 
 
