@@ -25,7 +25,7 @@ public class BeginScherm {
     public void naarVolgendScherm(int input) {
         switch(input){
             case 1:
-                new Registreren().start();
+                new Registreren().nieuweGebruiker();
                 break;
             case 2:
                 System.out.println("test");

@@ -19,17 +19,12 @@ public class Registreren {
     private final Gebruiker nieuweGebruiker = new Gebruiker();
     private boolean adresVragen = false;
 
-    public void start() {
-        nieuweGebruiker();
-    }
-
     public void nieuweGebruiker() {
         GebruikersDao gebruikersDao = new GebruikersDao(em);
 
         printLine();
         System.out.println("Registreren nieuwe gebruiker");
         printLine();
-
 
         System.out.print("Voornaam:");
         nieuweGebruiker.setVoornaam(readLine());
@@ -46,7 +41,6 @@ public class Registreren {
         adresVragen();
 
         nieuweGebruiker.setStatus(Status.ACTIEF);
-
 
         gebruikersDao.save(nieuweGebruiker);
 
