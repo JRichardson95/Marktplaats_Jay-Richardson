@@ -19,7 +19,6 @@ public class Registreren {
     private final Gebruiker nieuweGebruiker = new Gebruiker();
     private boolean adresVragen = false;
 
-
     public void start() {
         nieuweGebruiker();
     }
@@ -43,13 +42,19 @@ public class Registreren {
 
         printBezorgwijze();
 
-        if (adresVragen) nieuweGebruiker.setAdres(adresPrompt());
+        if (adresVragen){
+            nieuweGebruiker.setAdres(adresPrompt());
+        }else{
+            nieuweGebruiker.setAdres(new Adres());
+        }
         nieuweGebruiker.setStatus(Status.ACTIEF);
 
         GebruikersDao gebruikersDao = new GebruikersDao(em);
         gebruikersDao.save(nieuweGebruiker);
 
         System.out.println(nieuweGebruiker);
+
+        new BeginScherm();
     }
 
     public Set<Bezorgwijze> bezorgWijze() {

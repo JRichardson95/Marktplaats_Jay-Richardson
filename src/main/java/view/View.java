@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 
 public class View {
     private final static BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
+
     public static void printLine(){
         System.out.println("-----------------------");
     }
