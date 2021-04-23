@@ -1,25 +1,25 @@
 package view;
 
+import static view.View.*;
 
 public class BeginScherm {
-    private final View view = new View();
     public static void main(String[] args){
         new BeginScherm().start();
     }
 
     public void start() {
         prompt();
-        new BeginScherm().naarVolgendScherm(Integer.parseInt(view.readLine()));
+        new BeginScherm().naarVolgendScherm(Integer.parseInt(readLine()));
     }
 
     private void prompt() {
-        view.printLine();
+        printLine();
         System.out.println("Welkom op marktplaats");
         System.out.println("Wat wilt u doen:");
         System.out.println("" +
                 "1: registreren\n" +
                 "2: inloggen");
-        view.printLine();
+        printLine();
     }
 
     public void naarVolgendScherm(int input) {

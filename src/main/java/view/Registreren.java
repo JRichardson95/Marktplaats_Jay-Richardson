@@ -9,21 +9,16 @@ import model.entity.Gebruiker;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.*;
+
+import static view.View.*;
 
 public class Registreren {
     private final EntityManager em =
             Persistence.createEntityManagerFactory("MySQL-Marktplaats").createEntityManager();
-    View view = new View();
-    Gebruiker nieuweGebruiker = new Gebruiker();
-    private final BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
+    private final Gebruiker nieuweGebruiker = new Gebruiker();
     private boolean adresVragen = false;
 
-    public static void main(String[] args) {
-        System.out.println("gelukt");
-    }
 
     public void start() {
         nieuweGebruiker();
@@ -31,9 +26,9 @@ public class Registreren {
 
     public void nieuweGebruiker() {
 
-        view.printLine();
-        System.out.println("Registreren nieuwe gebruiker\n");
-        view.printLine();
+        printLine();
+        System.out.println("Registreren nieuwe gebruiker");
+        printLine();
 
 
         System.out.print("Voornaam:");
@@ -42,7 +37,7 @@ public class Registreren {
         nieuweGebruiker.setAchternaam(readLine());
         System.out.print("Email:");
         nieuweGebruiker.setEmail(readLine());
-        view.printLine();
+        printLine();
 
         nieuweGebruiker.setBezorgwijzeSet(bezorgWijze());
 
@@ -54,7 +49,7 @@ public class Registreren {
         GebruikersDao gebruikersDao = new GebruikersDao(em);
         gebruikersDao.save(nieuweGebruiker);
 
-        System.out.println(nieuweGebruiker.toString());
+        System.out.println(nieuweGebruiker);
     }
 
     public Set<Bezorgwijze> bezorgWijze() {
@@ -81,10 +76,10 @@ public class Registreren {
     }
 
     private void printBezorgwijze() {
-        view.printLine();
+        printLine();
         System.out.println("U heeft de volgende bezorgwijzen geselecteerd:");
         nieuweGebruiker.getBezorgwijzeSet().forEach(System.out::println);
-        view.printLine();
+        printLine();
     }
 
 
@@ -111,14 +106,5 @@ public class Registreren {
         postcode.setPostcodeLetters(postcodeInput.substring(4, 6));
         postcode.setPostcode();
         return postcode;
-    }
-
-    public String readLine() {
-        try {
-            return read.readLine();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return "Er ging iets mis met het invoeren";
     }
 }

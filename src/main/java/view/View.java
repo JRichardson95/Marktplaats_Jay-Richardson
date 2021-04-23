@@ -4,12 +4,12 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class View {
-    private final BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
-    public void printLine(){
+    private final static BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
+    public static void printLine(){
         System.out.println("-----------------------");
     }
 
-    public String readLine() {
+    public static String readLine() {
         try {
             return read.readLine();
         } catch (Exception e) {
