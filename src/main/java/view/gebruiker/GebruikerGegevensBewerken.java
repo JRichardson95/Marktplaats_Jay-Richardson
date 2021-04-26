@@ -11,7 +11,7 @@ import static view.gebruiker.BezorgwijzeScherm.vraagBezorgWijze;
 
 public class GebruikerGegevensBewerken {
     private Gebruiker huidigeGebruiker;
-    private GebruikersDao gebruikersDao = new GebruikersDao(em);
+    private final GebruikersDao gebruikersDao = new GebruikersDao(em);
 
     public GebruikerGegevensBewerken(Gebruiker huidigeGebruiker) {
         this.huidigeGebruiker = huidigeGebruiker;
@@ -117,9 +117,5 @@ public class GebruikerGegevensBewerken {
         gebruikersDao.update(huidigeGebruiker);
         println("update");
     }
-
-
-
-
 
 }

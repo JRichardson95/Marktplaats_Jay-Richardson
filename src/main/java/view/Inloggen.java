@@ -14,7 +14,7 @@ public class Inloggen {
     private String email;
     private String wachtwoord;
     private Gebruiker huidigeGebruiker;
-    private GebruikersDao gebruikersDao  = new GebruikersDao(em);
+    private final GebruikersDao gebruikersDao  = new GebruikersDao(em);
 
     public void start(){
         header("Inloggen");
@@ -44,7 +44,6 @@ public class Inloggen {
                 return true;
             }
         } catch (NoResultException e){
-            System.out.println(e);
             printException(new GebruikerNietGevonden(email));
         }
         return false;

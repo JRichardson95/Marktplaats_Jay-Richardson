@@ -5,7 +5,7 @@ import static view.View.*;
 
 public class GebruikerScherm {
 
-    private Gebruiker huidigeGebruiker;
+    private final Gebruiker huidigeGebruiker;
 
     public GebruikerScherm(Gebruiker huidigeGebruiker) {
         this.huidigeGebruiker = huidigeGebruiker;

@@ -24,6 +24,6 @@ public enum Bezorgwijze {
         public String toString() {
             return "4: Versturen onder rembours";
         }
-    };
+    }
 
 }

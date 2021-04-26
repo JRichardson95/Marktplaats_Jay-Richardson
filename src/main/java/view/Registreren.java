@@ -1,13 +1,9 @@
 package view;
 
 import controller.dao.GebruikersDao;
-import model.Adres;
-import model.Bezorgwijze;
-import model.Postcode;
 import model.Status;
 import model.entity.Gebruiker;
 
-import java.util.*;
 
 
 import static config.EntityManager.em;

@@ -1,15 +1,10 @@
 package view;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class View {
     private static final BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
-
-
-
 
     public static void print(String input){
         System.out.print(input);
