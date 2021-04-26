@@ -14,8 +14,8 @@ public class BeginScherm {
 
     public void prompt() {
         header("Welkom op marktplaats");
-        System.out.println("Wat wilt u doen:");
-        System.out.println("" +
+        println("Wat wilt u doen:");
+        println("" +
                 "1: registreren\n" +
                 "2: inloggen");
         divider();
@@ -30,7 +30,7 @@ public class BeginScherm {
                 new Inloggen().start();
                 break;
             default:
-                System.out.println("Verkeerde input");
+                println("Verkeerde input");
                 start();
 
         }

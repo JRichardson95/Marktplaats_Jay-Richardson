@@ -6,12 +6,11 @@
              version="2.2">
 
     <persistence-unit name="MySQL-Marktplaats">
-
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Marktplaats?serverTimezone=UTC"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
             <property name="javax.persistence.jdbc.password" value="RootPassword"/>
-            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="false"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
@@ -19,20 +18,16 @@
         </properties>
     </persistence-unit>
 
-    <persistence-unit name="MySQL-MarktplaatsTest">
-
+    <persistence-unit name="H2-MarktplaatsTest">
+        <class>model.entity.Gebruiker</class>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Marktplaats?serverTimezone=UTC"/>
-            <property name="javax.persistence.jdbc.user" value="root"/>
-            <property name="javax.persistence.jdbc.password" value="RootPassword"/>
-            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:Marktplaats"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
             <property name="hibernate.show_sql" value="false"/>
             <property name="hibernate.format_sql" value="true"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
-            <property name="ja" value=""/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
         </properties>
     </persistence-unit>
-
-
-
 </persistence>

@@ -1,7 +1,7 @@
 package model.entity;
 
-import com.sun.istack.Nullable;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import model.Adres;
@@ -13,9 +13,12 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.util.Set;
 
-@Data @AllArgsConstructor
-@NoArgsConstructor
+@Builder
+@Data @AllArgsConstructor @NoArgsConstructor
 @Entity
+@NamedQueries({
+        @NamedQuery(name ="Gebruiker.findAll", query = "Select g from Gebruiker g")
+})
 public class Gebruiker implements Identifiable<Long> {
     @Id @GeneratedValue
     private Long id;
@@ -26,6 +29,8 @@ public class Gebruiker implements Identifiable<Long> {
     @Email
     private String email;
 
+    private String password;
+
     @Embedded
     private Adres adres;
 
@@ -34,4 +39,8 @@ public class Gebruiker implements Identifiable<Long> {
 
     @ElementCollection
     private Set<Bezorgwijze> bezorgwijzeSet;
+
+    public String getNaam() {
+        return voornaam +  " " + achternaam;
+    }
 }
