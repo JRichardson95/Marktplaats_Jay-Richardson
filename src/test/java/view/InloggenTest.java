@@ -16,10 +16,7 @@ class InloggenTest {
 
     private Inloggen target;
     private Gebruiker testGebruiker;
-
-    @Mock
     private GebruikersDao targetDao;
-
 
     @BeforeEach
     void setUp() {
@@ -28,7 +25,7 @@ class InloggenTest {
         testGebruiker = Gebruiker.builder()
                 .voornaam("Jay")
                 .achternaam("Richardson")
-                .email("test@gmail.com")
+                .email("123@gmail.com")
                 .password("testWachtwoord")
                 .build();
 
@@ -37,10 +34,8 @@ class InloggenTest {
 
     @Test
     void testVerifiëren(){
-        String email = "test@gmail.com";
+        String email = "123@gmail.com";
         String password = "testWachtwoord";
-
-        Assert.assertEquals(true, target.verifiëren(email, password));
-
+        Assert.assertTrue(target.verifiëren(email, password, targetDao));
     }
 }

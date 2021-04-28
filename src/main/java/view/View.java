@@ -17,6 +17,10 @@ public class View {
         System.err.println(e);
     }
 
+    public static void printErr(String input){
+        System.err.println(input);
+    }
+
     public static void divider(){
         System.out.println("--------------------------------------------");
     }

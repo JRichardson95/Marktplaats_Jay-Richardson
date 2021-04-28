@@ -1,7 +1,10 @@
 package view;
 
+import lombok.extern.log4j.Log4j2;
+
 import static view.View.*;
 
+@Log4j2
 public class BeginScherm {
     public static void main(String[] args){
         new BeginScherm().start();
