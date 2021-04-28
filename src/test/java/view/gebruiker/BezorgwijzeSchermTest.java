@@ -36,8 +36,9 @@ class BezorgwijzeSchermTest {
 
     @Test
     void adresVragen() {
+        Set<Bezorgwijze> setZonderThuisAfhalen = new HashSet<>();
         Adres adres = new Adres();
-        Assert.assertEquals(adres, BezorgwijzeScherm.adresVragen());
+        Assert.assertEquals(adres, BezorgwijzeScherm.adresVragen(setZonderThuisAfhalen));
     }
 
 //    @Test

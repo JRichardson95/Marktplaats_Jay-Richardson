@@ -7,8 +7,7 @@ import model.entity.Gebruiker;
 import static config.EntityManager.em;
 import static view.View.*;
 import static view.gebruiker.AdresScherm.adresPrompt;
-import static view.gebruiker.BezorgwijzeScherm.adresVragen;
-import static view.gebruiker.BezorgwijzeScherm.vraagBezorgWijze;
+import static view.gebruiker.BezorgwijzeScherm.*;
 
 @Log4j2
 public class GebruikerGegevensBewerken {
@@ -114,6 +113,7 @@ public class GebruikerGegevensBewerken {
     private void bezorgwijzeWijzigen() {
         log.info("Bezorgwijze wijzigen");
         huidigeGebruiker.setBezorgwijzeSet(vraagBezorgWijze());
+        huidigeGebruiker.setAdres(adresVragen(huidigeGebruiker.getBezorgwijzeSet()));
     }
 
     private void gegevensWeergeven() {

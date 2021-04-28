@@ -29,8 +29,6 @@ public class BezorgwijzeScherm {
             }
         }
 
-        adresVragen = gekozenBezorgwijze.contains(1);
-
         Set<Bezorgwijze> bezorgwijzeSet = new HashSet<>();
         gekozenBezorgwijze.forEach(i -> bezorgwijzeSet.add(Bezorgwijze.values()[i]));
         return bezorgwijzeSet;
@@ -43,8 +41,12 @@ public class BezorgwijzeScherm {
         divider();
     }
 
-    public static Adres adresVragen(){
-        if (adresVragen){return adresPrompt();}
+    public static Adres adresVragen(Set<Bezorgwijze> bezorgwijzeSet){
+        if (isAdresVragen(bezorgwijzeSet)){return adresPrompt();}
         return new Adres();
+    }
+
+    public static boolean isAdresVragen(Set<Bezorgwijze> bezorgwijzeSet){
+        return bezorgwijzeSet.contains(Bezorgwijze.THUIS_AFHALEN);
     }
 }
