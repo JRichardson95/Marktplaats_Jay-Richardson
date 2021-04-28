@@ -31,6 +31,8 @@ public class Gebruiker implements Identifiable<Long> {
 
     private String password;
 
+    private boolean akkoordMetVoorwaarde;
+
     @Embedded
     private Adres adres;
 

@@ -26,7 +26,7 @@ public class GebruikerGegevensBewerken {
                 "3: Wachtwoord\n" +
                 "4: Adres\n" +
                 "5: Bezorgwijze\n" +
-                "6: Gegevens bekijken" +
+                "6: Gegevens bekijken\n" +
                 "0: Terug naar hoofdmenu");
 
         keuzeMenu(readInt());

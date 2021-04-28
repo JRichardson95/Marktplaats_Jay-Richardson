@@ -4,6 +4,7 @@ import controller.dao.GebruikersDao;
 import exception.GebruikerNietGevonden;
 import model.entity.Gebruiker;
 import view.gebruiker.GebruikerScherm;
+import view.gebruiker.VoorwaardenScherm;
 
 import javax.persistence.NoResultException;
 
@@ -21,7 +22,14 @@ public class Inloggen {
 
         getGegevens();
 
-        if(verifiëren(email, wachtwoord)){naarGebruikerScherm(huidigeGebruiker);}
+        if(verifiëren(email, wachtwoord)){
+            if (huidigeGebruiker.isAkkoordMetVoorwaarde())naarGebruikerScherm(huidigeGebruiker);
+            else{
+                println("U heeft de algemene voorwaarden nog niet geaccepteerd");
+                huidigeGebruiker.setAkkoordMetVoorwaarde(new VoorwaardenScherm().start());
+                start();
+            }
+        }
         else {start();}
     }
 
@@ -33,14 +41,11 @@ public class Inloggen {
     }
 
     protected boolean verifiëren(String email, String wachtwoord) {
-        System.out.println("test1");
         try {
             gebruikersDao.findAll().forEach(System.out::println);
             Gebruiker gebruiker = gebruikersDao.findByEmail(email);
-            print("test2");
             if (gebruiker.getPassword().equals(wachtwoord)){
                 huidigeGebruiker = gebruiker;
-                print("test3");
                 return true;
             }
         } catch (NoResultException e){

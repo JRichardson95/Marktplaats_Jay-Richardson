@@ -3,7 +3,7 @@ package view;
 import controller.dao.GebruikersDao;
 import model.Status;
 import model.entity.Gebruiker;
-
+import view.gebruiker.VoorwaardenScherm;
 
 
 import static config.EntityManager.em;
@@ -35,6 +35,8 @@ public class Registreren {
         nieuweGebruiker.setStatus(Status.ACTIEF);
 
         nieuweGebruiker.setPassword("testWachtwoord");
+
+        nieuweGebruiker.setAkkoordMetVoorwaarde(new VoorwaardenScherm().start());
 
         gebruikersDao.save(nieuweGebruiker);
 
