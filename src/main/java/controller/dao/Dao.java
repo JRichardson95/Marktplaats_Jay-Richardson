@@ -15,28 +15,23 @@ public abstract class Dao <T extends Identifiable<I>, I>{
 
     public T find(I id){ return entityManager.find(T(), id);}
 
-    public List<T> findAll() {  // SELECT ...
+    public List<T> findAll() {
         return entityManager.createNamedQuery(typeSimple() + ".findAll", T()).getResultList(); // JPQL Java Persistence Query Language
     }
 
     public void save(T p) {
         entityManager.getTransaction().begin();
-        entityManager.persist(p); // INSERT == persist
+        entityManager.persist(p);
         entityManager.getTransaction().commit();
     }
 
     public T update(T e) {
         entityManager.getTransaction().begin();
-        T mergedT = entityManager.merge(e);// UPDATE ...
+        T mergedT = entityManager.merge(e);
         entityManager.getTransaction().commit();
         return mergedT;
     }
 
-    public void remove(T e) {
-        entityManager.getTransaction().begin();
-        entityManager.remove(find(e.getId())); // DELETE ...
-        entityManager.getTransaction().commit();
-    }
 
     /**
      * @return a class instance of the first generic type parameter (E) of this Dao,

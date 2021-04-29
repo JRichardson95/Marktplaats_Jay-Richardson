@@ -3,12 +3,13 @@ package view.advertentie;
 import model.Bezorgwijze;
 import model.Categorie;
 import model.entity.Gebruiker;
-import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class AdvertentieAanmakenSchermTest {
 
@@ -23,11 +24,11 @@ class AdvertentieAanmakenSchermTest {
 
     @Test
     void selecteerCategorie() {
-        Assert.assertEquals(Categorie.KLUSSEN, advertentieAanmakenScherm.selecteerCategorie("klussen"));
-        Assert.assertEquals(Categorie.SCHILDEREN, advertentieAanmakenScherm.selecteerCategorie("Schilderen"));
-        Assert.assertEquals(Categorie.COMPUTERS, advertentieAanmakenScherm.selecteerCategorie("computers"));
-        Assert.assertEquals(Categorie.MEUBELS, advertentieAanmakenScherm.selecteerCategorie("meubels"));
-        Assert.assertEquals(null, advertentieAanmakenScherm.selecteerCategorie("meubel"));
+        assertEquals(Categorie.KLUSSEN, advertentieAanmakenScherm.selecteerCategorie("klussen"));
+        assertEquals(Categorie.SCHILDEREN, advertentieAanmakenScherm.selecteerCategorie("Schilderen"));
+        assertEquals(Categorie.COMPUTERS, advertentieAanmakenScherm.selecteerCategorie("computers"));
+        assertEquals(Categorie.MEUBELS, advertentieAanmakenScherm.selecteerCategorie("meubels"));
+        assertNull(advertentieAanmakenScherm.selecteerCategorie("meubel"));
     }
 
     @Test
@@ -38,8 +39,8 @@ class AdvertentieAanmakenSchermTest {
 
         testGebruiker.setBezorgwijzeSet(testSet);
 
-        Assert.assertTrue(advertentieAanmakenScherm.selecteerBezorgwijze("2").contains(Bezorgwijze.VERSTUREN));
-        Assert.assertFalse(advertentieAanmakenScherm.selecteerBezorgwijze("2").contains(Bezorgwijze.AFHALEN_MAGAZIJN));
+        assertTrue(advertentieAanmakenScherm.selecteerBezorgwijze("2").contains(Bezorgwijze.VERSTUREN));
+        assertFalse(advertentieAanmakenScherm.selecteerBezorgwijze("2").contains(Bezorgwijze.AFHALEN_MAGAZIJN));
     }
 
 }
