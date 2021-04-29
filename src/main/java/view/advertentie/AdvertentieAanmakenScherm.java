@@ -67,7 +67,7 @@ public class AdvertentieAanmakenScherm {
         advertentieDao.save(advertentie);
     }
 
-    private void toonCategorieën() {
+    protected void toonCategorieën() {
         log.info("Categorieën tonen");
         println("Welke categorie wilt u selecteren: ");
         for (Categorie categorie : Categorie.values()) {
@@ -76,7 +76,7 @@ public class AdvertentieAanmakenScherm {
         divider();
     }
 
-    private Categorie selecteerCategorie(String categorie) {
+    protected Categorie selecteerCategorie(String categorie) {
         log.info("Juiste categorie aan advertentie toevoegen");
         switch (categorie.toLowerCase()) {
             case "klussen":
@@ -93,7 +93,7 @@ public class AdvertentieAanmakenScherm {
         }
     }
 
-    private void toonBezorgwijze() {
+    protected void toonBezorgwijze() {
         log.info("Door gebruiker ondersteunde bezorgwijze weergeven");
         println("Welk van uw bezorgwijze wilt u voor deze advertentie ondersteunen:");
         huidigeGebruiker.getBezorgwijzeSet().forEach(System.out::println);
@@ -101,7 +101,7 @@ public class AdvertentieAanmakenScherm {
         divider();
     }
 
-    public Set<Bezorgwijze> selecteerBezorgwijze(String keuzes) {
+    protected Set<Bezorgwijze> selecteerBezorgwijze(String keuzes) {
         log.info("Bezorgwijze toevoegen aan advertentie.");
         Stream.of(keuzes.split(" "))
                 .flatMapToInt(num -> IntStream.of(Integer.parseInt(num)))
@@ -109,11 +109,11 @@ public class AdvertentieAanmakenScherm {
         return bezorgwijzeSet;
     }
 
-    private void controleerBezorgwijze(Bezorgwijze bezorgwijze){
+    protected void controleerBezorgwijze(Bezorgwijze bezorgwijze) {
         log.info("Controleren of gekozen bezorgwijze in het account van de gebruiker wordt ondersteund");
-        if (huidigeGebruiker.getBezorgwijzeSet().contains(bezorgwijze)){
+        if (huidigeGebruiker.getBezorgwijzeSet().contains(bezorgwijze)) {
             bezorgwijzeSet.add(bezorgwijze);
-        }else{
+        } else {
             log.error("Niet ondersteunde bezorgwijze gekozen");
             println("U heeft een bezorgwijze geselecteerd die u niet in uw account heeft opgenomen");
             toonBezorgwijze();
