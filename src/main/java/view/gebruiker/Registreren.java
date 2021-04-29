@@ -55,10 +55,17 @@ public class Registreren {
     }
 
     private void controleerEmail(String email) {
-        if (gebruikersDao.existsByEmail(email)) {
-            nieuweGebruiker.setEmail(email);
+        if (email.contains("@")) {
+            if (gebruikersDao.existsByEmail(email)) {
+                nieuweGebruiker.setEmail(email);
+            } else {
+                printErr("Er bestaat al een account met email: " + email);
+                println("");
+                vraagEmail();
+            }
         } else {
-            printErr("Er bestaat al een account met email: " + email);
+            log.error("Ongeldig email adres ingevoerd");
+            printErr("Ongeldig email adres ingevoerd: " + email);
             println("");
             vraagEmail();
         }
