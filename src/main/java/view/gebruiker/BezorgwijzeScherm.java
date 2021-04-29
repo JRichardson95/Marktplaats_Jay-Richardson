@@ -11,11 +11,10 @@ import static view.View.readLine;
 import static view.gebruiker.AdresScherm.adresPrompt;
 
 public class BezorgwijzeScherm {
-    private static boolean adresVragen = false;
-
     public static Set<Bezorgwijze> vraagBezorgWijze() {
         println("Welke bezorgwijze wilt u ondersteunen?");
         Arrays.asList(Bezorgwijze.values()).forEach(System.out::println);
+        printPointer();
         return bezorgwijzeSet(readLine());
     }
 
@@ -25,7 +24,7 @@ public class BezorgwijzeScherm {
         for (int i = 0; i < keuzes.length(); i++) {
             if(Character.isDigit(keuzes.charAt(i))){
                 gekozenBezorgwijze.add(Integer.parseInt(
-                        String.valueOf(keuzes.charAt(i))) - 1);
+                        String.valueOf(keuzes.charAt(i))));
             }
         }
 

@@ -11,6 +11,7 @@ import model.Status;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.HashSet;
 import java.util.Set;
 
 @Builder
@@ -45,4 +46,5 @@ public class Gebruiker implements Identifiable<Long> {
     public String getNaam() {
         return voornaam +  " " + achternaam;
     }
+
 }

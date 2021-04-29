@@ -1,6 +1,8 @@
 package view;
 
 import lombok.extern.log4j.Log4j2;
+import view.gebruiker.Inloggen;
+import view.gebruiker.Registreren;
 
 import static view.View.*;
 
@@ -12,6 +14,7 @@ public class BeginScherm {
 
     public void start() {
         prompt();
+        printPointer();
         new BeginScherm().naarVolgendScherm(Integer.parseInt(readLine()));
     }
 

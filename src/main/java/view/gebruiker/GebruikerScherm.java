@@ -1,6 +1,8 @@
 package view.gebruiker;
 import lombok.extern.log4j.Log4j2;
 import model.entity.Gebruiker;
+import view.advertentie.AdvertentieAanmakenScherm;
+import view.advertentie.AdvertentieBekijkenScherm;
 
 import static view.View.*;
 
@@ -21,8 +23,9 @@ public class GebruikerScherm {
         println("Wat wilt u doen:\n" +
                 "1: Gegevens bewerken\n" +
                 "2: Advertentie aanmaken\n" +
-                "3: Advertenties bekijken");
+                "3: Eigen advertenties bekijken");
 
+        printPointer();
         keuzeMenu(Integer.parseInt(readLine()));
     }
 
@@ -32,12 +35,12 @@ public class GebruikerScherm {
             case 1:
                 new GebruikerGegevensBewerken(huidigeGebruiker).start();
                 break;
-//            case 2:
-//                new AdvertentieAanmakenScherm().start();
-//                break;
-//            case 3:
-//                new AdvertentiesBekijkenScherm().start();
-//                break;
+            case 2:
+                new AdvertentieAanmakenScherm(huidigeGebruiker).start();
+                break;
+            case 3:
+                new AdvertentieBekijkenScherm(huidigeGebruiker).eigenAdvertentiesBekijken();
+                break;
             default:
                 log.error("Ongeldige input van gebruiker");
                 println("Ongeldige input");

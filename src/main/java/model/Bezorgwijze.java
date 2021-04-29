@@ -4,25 +4,25 @@ public enum Bezorgwijze {
     AFHALEN_MAGAZIJN {
         @Override
         public String toString() {
-            return "1: Afhalen magazijn";
+            return ordinal() + ": Afhalen magazijn";
         }
     },
     THUIS_AFHALEN {
         @Override
         public String toString() {
-            return "2: Thuis afhalen";
+            return ordinal()+ ": Thuis afhalen";
         }
     },
     VERSTUREN {
         @Override
         public String toString() {
-            return "3: Versturen";
+            return ordinal()+ ": Versturen";
         }
     },
     VERSTUREN_ONDER_REMBOURS {
         @Override
         public String toString() {
-            return "4: Versturen onder rembours";
+            return ordinal()+ ": Versturen onder rembours";
         }
     }
 

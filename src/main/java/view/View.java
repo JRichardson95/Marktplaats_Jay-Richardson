@@ -2,6 +2,7 @@ package view;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 
 public class View {
     private static final BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
@@ -12,13 +13,12 @@ public class View {
     public static void println(String input){
         System.out.println(input);
     }
+    public static void printErr(String input){ System.err.println(input); }
 
-    public static void printException(Exception e){
-        System.err.println(e);
-    }
-
-    public static void printErr(String input){
-        System.err.println(input);
+    public static void printPointer(){
+        final String ANSI_RESET = "\u001B[0m";
+        final String ANSI_GREEN = "\u001B[32m";
+        print(ANSI_GREEN+"> "+ANSI_RESET);
     }
 
     public static void divider(){
@@ -31,7 +31,7 @@ public class View {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return "Er ging iets mis met het invoeren";
+        return "Ongeldige input";
     }
 
     public static int readInt(){
@@ -43,13 +43,19 @@ public class View {
         return 0;
     }
 
+    public static BigDecimal readBigDecimal(){
+        try {
+            return new BigDecimal(read.readLine());
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
     public static void header(String titel){
         divider();
         System.out.println("        " + titel);
         divider();
     }
-
-
-
 
 }

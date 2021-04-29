@@ -1,4 +1,4 @@
-package view;
+package view.gebruiker;
 
 import controller.dao.GebruikersDao;
 import exception.GebruikerNietGevonden;

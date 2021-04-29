@@ -1,11 +1,11 @@
-package view;
+package view.gebruiker;
 
 import controller.dao.GebruikersDao;
 import model.entity.Gebruiker;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
+import view.gebruiker.Inloggen;
 
 import javax.persistence.Persistence;
 

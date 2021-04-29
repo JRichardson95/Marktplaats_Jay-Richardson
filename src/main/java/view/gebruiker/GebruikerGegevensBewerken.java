@@ -32,6 +32,7 @@ public class GebruikerGegevensBewerken {
                 "6: Gegevens bekijken\n" +
                 "0: Terug naar hoofdmenu");
 
+        printPointer();
         keuzeMenu(readInt());
         updateGebruiker(gebruikersDao, huidigeGebruiker);
         new GebruikerScherm(huidigeGebruiker).start();
@@ -129,7 +130,6 @@ public class GebruikerGegevensBewerken {
     protected void updateGebruiker(GebruikersDao gebruikersDao, Gebruiker gebruiker){
         log.info("Gebruiker gegevens updaten...");
         gebruikersDao.update(gebruiker);
-        println("update");
     }
 
 }

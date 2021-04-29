@@ -5,11 +5,8 @@ import model.entity.Gebruiker;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import view.Inloggen;
 
 import javax.persistence.Persistence;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class GebruikerGegevensBewerkenTest {
 

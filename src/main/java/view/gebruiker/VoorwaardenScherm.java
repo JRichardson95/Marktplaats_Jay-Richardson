@@ -17,6 +17,6 @@ public class VoorwaardenScherm {
     }
 
     private boolean akkoordMetVoorwaarde(String keuze) {
-        return keuze.toLowerCase().equals("ja");
+        return keuze.equalsIgnoreCase("ja");
     }
 }

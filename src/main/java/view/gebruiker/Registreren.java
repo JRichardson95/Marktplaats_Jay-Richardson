@@ -1,15 +1,16 @@
-package view;
+package view.gebruiker;
 
 import controller.dao.GebruikersDao;
+import lombok.extern.log4j.Log4j2;
 import model.Status;
 import model.entity.Gebruiker;
-import view.gebruiker.VoorwaardenScherm;
-
 
 import static config.EntityManager.em;
 import static view.View.*;
+import static model.GenereerWachtwoord.maakWachtwoord;
 import static view.gebruiker.BezorgwijzeScherm.*;
 
+@Log4j2
 public class Registreren {
     private final Gebruiker nieuweGebruiker = new Gebruiker();
 
@@ -18,11 +19,11 @@ public class Registreren {
 
         header("Registreren nieuwe gebruiker");
 
-        print("Voornaam:");
+        print("Voornaam: ");
         nieuweGebruiker.setVoornaam(readLine());
-        print("Achternaam:");
+        print("Achternaam: ");
         nieuweGebruiker.setAchternaam(readLine());
-        print("Email:");
+        print("Email: ");
         nieuweGebruiker.setEmail(readLine());
         divider();
 
@@ -34,14 +35,16 @@ public class Registreren {
 
         nieuweGebruiker.setStatus(Status.ACTIEF);
 
-        nieuweGebruiker.setPassword("testWachtwoord");
+        log.info("Gegenereerd wachtwoord meegeven ipv Email versturen");
+        nieuweGebruiker.setPassword(maakWachtwoord());
 
         nieuweGebruiker.setAkkoordMetVoorwaarde(new VoorwaardenScherm().start());
 
         gebruikersDao.save(nieuweGebruiker);
 
-        println(nieuweGebruiker.toString());
+        divider();
+        println("Wachtwoord = " + nieuweGebruiker.getPassword());
 
-        new BeginScherm().start();
+        new Inloggen().start();
     }
 }
