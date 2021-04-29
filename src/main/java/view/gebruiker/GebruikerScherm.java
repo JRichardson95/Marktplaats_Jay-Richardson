@@ -23,7 +23,8 @@ public class GebruikerScherm {
         println("Wat wilt u doen:\n" +
                 "1: Gegevens bewerken\n" +
                 "2: Advertentie aanmaken\n" +
-                "3: Eigen advertenties bekijken");
+                "3: Eigen advertenties bekijken\n" +
+                "0: Uitloggen");
 
         printPointer();
         keuzeMenu(Integer.parseInt(readLine()));
@@ -31,7 +32,7 @@ public class GebruikerScherm {
 
     private void keuzeMenu(int keuze) {
         log.info("Gebruiker naar juiste scherm sturen");
-        switch (keuze){
+        switch (keuze) {
             case 1:
                 new GebruikerGegevensBewerken(huidigeGebruiker).start();
                 break;
@@ -41,6 +42,8 @@ public class GebruikerScherm {
             case 3:
                 new AdvertentieBekijkenScherm(huidigeGebruiker).eigenAdvertentiesBekijken();
                 break;
+            case 0:
+                new view.BeginScherm().start();
             default:
                 log.error("Ongeldige input van gebruiker");
                 println("Ongeldige input");

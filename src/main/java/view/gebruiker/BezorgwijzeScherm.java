@@ -4,32 +4,41 @@ import model.Adres;
 import model.Bezorgwijze;
 import model.entity.Gebruiker;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static view.View.*;
-import static view.View.readLine;
 import static view.gebruiker.AdresScherm.adresPrompt;
 
 public class BezorgwijzeScherm {
     public static Set<Bezorgwijze> vraagBezorgWijze() {
         println("Welke bezorgwijze wilt u ondersteunen?");
         Arrays.asList(Bezorgwijze.values()).forEach(System.out::println);
+        println("Keuze scheiden met een spatie.");
         printPointer();
         return bezorgwijzeSet(readLine());
     }
 
     public static Set<Bezorgwijze> bezorgwijzeSet(String keuzes) {
-        List<Integer> gekozenBezorgwijze = new ArrayList<>();
-
-        for (int i = 0; i < keuzes.length(); i++) {
-            if(Character.isDigit(keuzes.charAt(i))){
-                gekozenBezorgwijze.add(Integer.parseInt(
-                        String.valueOf(keuzes.charAt(i))));
-            }
-        }
-
+//        List<Integer> gekozenBezorgwijze = new ArrayList<>();
         Set<Bezorgwijze> bezorgwijzeSet = new HashSet<>();
-        gekozenBezorgwijze.forEach(i -> bezorgwijzeSet.add(Bezorgwijze.values()[i]));
+
+        Stream.of(keuzes.split(" "))
+                .flatMapToInt(num -> IntStream.of(Integer.parseInt(num)))
+                .forEach(i -> bezorgwijzeSet.add(Bezorgwijze.values()[i]));
+
+//        for (int i = 0; i < keuzes.length(); i++) {
+//            if(Character.isDigit(keuzes.charAt(i))){
+//                gekozenBezorgwijze.add(Integer.parseInt(
+//                        String.valueOf(keuzes.charAt(i))));
+//            }
+//        }
+//
+//
+//        gekozenBezorgwijze.forEach(i -> bezorgwijzeSet.add(Bezorgwijze.values()[i]));
         return bezorgwijzeSet;
     }
 

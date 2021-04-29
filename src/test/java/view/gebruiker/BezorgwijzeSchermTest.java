@@ -18,7 +18,7 @@ class BezorgwijzeSchermTest {
         bezorgwijzeSet.add(Bezorgwijze.AFHALEN_MAGAZIJN);
         bezorgwijzeSet.add(Bezorgwijze.VERSTUREN);
 
-        Set<Bezorgwijze> verkregenBezorgWijze = BezorgwijzeScherm.bezorgwijzeSet("13");
+        Set<Bezorgwijze> verkregenBezorgWijze = BezorgwijzeScherm.bezorgwijzeSet("0 2");
 
         Assert.assertEquals(bezorgwijzeSet, verkregenBezorgWijze);
     }
@@ -29,7 +29,7 @@ class BezorgwijzeSchermTest {
         bezorgwijzeSet.add(Bezorgwijze.AFHALEN_MAGAZIJN);
         bezorgwijzeSet.add(Bezorgwijze.VERSTUREN);
 
-        Set<Bezorgwijze> verkregenBezorgWijze = BezorgwijzeScherm.bezorgwijzeSet("14");
+        Set<Bezorgwijze> verkregenBezorgWijze = BezorgwijzeScherm.bezorgwijzeSet("0 3");
 
         Assert.assertNotEquals(bezorgwijzeSet, verkregenBezorgWijze);
     }

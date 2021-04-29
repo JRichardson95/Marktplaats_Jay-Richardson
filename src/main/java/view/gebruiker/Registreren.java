@@ -31,7 +31,7 @@ public class Registreren {
 
         printBezorgwijze(nieuweGebruiker);
 
-        adresVragen(nieuweGebruiker.getBezorgwijzeSet());
+        nieuweGebruiker.setAdres(adresVragen(nieuweGebruiker.getBezorgwijzeSet()));
 
         nieuweGebruiker.setStatus(Status.ACTIEF);
 
