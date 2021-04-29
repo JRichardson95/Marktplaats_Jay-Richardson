@@ -3,6 +3,7 @@ import lombok.extern.log4j.Log4j2;
 import model.entity.Gebruiker;
 import view.advertentie.AdvertentieAanmakenScherm;
 import view.advertentie.AdvertentieBekijkenScherm;
+import view.main.BeginScherm;
 
 import static view.View.*;
 
@@ -43,12 +44,11 @@ public class GebruikerScherm {
                 new AdvertentieBekijkenScherm(huidigeGebruiker).eigenAdvertentiesBekijken();
                 break;
             case 0:
-                new view.BeginScherm().start();
+                new BeginScherm().start();
             default:
                 log.error("Ongeldige input van gebruiker");
                 println("Ongeldige input");
                 start();
         }
     }
-
 }

@@ -23,22 +23,12 @@ public class BezorgwijzeScherm {
     }
 
     public static Set<Bezorgwijze> bezorgwijzeSet(String keuzes) {
-//        List<Integer> gekozenBezorgwijze = new ArrayList<>();
         Set<Bezorgwijze> bezorgwijzeSet = new HashSet<>();
 
         Stream.of(keuzes.split(" "))
                 .flatMapToInt(num -> IntStream.of(Integer.parseInt(num)))
                 .forEach(i -> bezorgwijzeSet.add(Bezorgwijze.values()[i]));
 
-//        for (int i = 0; i < keuzes.length(); i++) {
-//            if(Character.isDigit(keuzes.charAt(i))){
-//                gekozenBezorgwijze.add(Integer.parseInt(
-//                        String.valueOf(keuzes.charAt(i))));
-//            }
-//        }
-//
-//
-//        gekozenBezorgwijze.forEach(i -> bezorgwijzeSet.add(Bezorgwijze.values()[i]));
         return bezorgwijzeSet;
     }
 

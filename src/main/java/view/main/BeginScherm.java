@@ -1,4 +1,4 @@
-package view;
+package view.main;
 
 import lombok.extern.log4j.Log4j2;
 import view.gebruiker.Inloggen;
