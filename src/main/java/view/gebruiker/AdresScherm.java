@@ -1,13 +1,16 @@
 package view.gebruiker;
 
+import lombok.extern.log4j.Log4j2;
 import model.Adres;
 import model.Postcode;
 
 import static view.View.*;
 
+@Log4j2
 public class AdresScherm {
 
     public static Adres adresPrompt() {
+        log.info("Adres vragen");
         Adres adres = new Adres();
         println("U heeft als bezorgwijze \"Thuis afhalen\" geselecteerd.");
         println("Adres: ");
