@@ -10,16 +10,16 @@ import static view.View.*;
 @Log4j2
 public class GebruikerScherm {
 
-    private final Gebruiker huidigeGebruiker;
+    private final Gebruiker HUIDIGE_GEBRUIKER;
 
     public GebruikerScherm(Gebruiker huidigeGebruiker) {
-        this.huidigeGebruiker = huidigeGebruiker;
+        this.HUIDIGE_GEBRUIKER = huidigeGebruiker;
     }
 
     public void start(){
         log.info("Start scherm gebruiker");
 
-        header("Welkom " + huidigeGebruiker.getNaam());
+        header("Welkom " + HUIDIGE_GEBRUIKER.getNaam());
 
         println("Wat wilt u doen:\n" +
                 "1: Gegevens bewerken\n" +
@@ -35,13 +35,13 @@ public class GebruikerScherm {
         log.info("Gebruiker naar juiste scherm sturen");
         switch (keuze) {
             case 1:
-                new GebruikerGegevensBewerken(huidigeGebruiker).start();
+                new GebruikerGegevensBewerken(HUIDIGE_GEBRUIKER).start();
                 break;
             case 2:
-                new AdvertentieAanmakenScherm(huidigeGebruiker).start();
+                new AdvertentieAanmakenScherm(HUIDIGE_GEBRUIKER).start();
                 break;
             case 3:
-                new AdvertentieBekijkenScherm(huidigeGebruiker).eigenAdvertentiesBekijken();
+                new AdvertentieBekijkenScherm(HUIDIGE_GEBRUIKER).eigenAdvertentiesBekijken();
                 break;
             case 0:
                 new BeginScherm().start();

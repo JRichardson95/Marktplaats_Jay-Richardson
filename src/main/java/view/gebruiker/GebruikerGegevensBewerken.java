@@ -4,7 +4,7 @@ import controller.dao.GebruikersDao;
 import lombok.extern.log4j.Log4j2;
 import model.entity.Gebruiker;
 
-import static config.EntityManager.em;
+import static config.EntityManager.EM;
 import static view.View.*;
 import static view.gebruiker.AdresScherm.adresPrompt;
 import static view.gebruiker.BezorgwijzeScherm.adresVragen;
@@ -12,14 +12,14 @@ import static view.gebruiker.BezorgwijzeScherm.vraagBezorgWijze;
 
 @Log4j2
 public class GebruikerGegevensBewerken {
-    private final Gebruiker huidigeGebruiker;
-    private final GebruikersDao gebruikersDao = new GebruikersDao(em);
+    private final Gebruiker HUIDIGE_GEBRUIKER;
+    private final GebruikersDao GEBRUIKERS_DAO = new GebruikersDao(EM);
 
     public GebruikerGegevensBewerken(Gebruiker huidigeGebruiker) {
-        this.huidigeGebruiker = huidigeGebruiker;
+        this.HUIDIGE_GEBRUIKER = huidigeGebruiker;
     }
 
-    public void start(){
+    public void start() {
         log.info("Gegevens bewerken scherm");
 
         header("Gegevens bewerken");
@@ -35,8 +35,8 @@ public class GebruikerGegevensBewerken {
 
         printPointer();
         keuzeMenu(readInt());
-        updateGebruiker(gebruikersDao, huidigeGebruiker);
-        new GebruikerScherm(huidigeGebruiker).start();
+        updateGebruiker(GEBRUIKERS_DAO, HUIDIGE_GEBRUIKER);
+        new GebruikerScherm(HUIDIGE_GEBRUIKER).start();
     }
 
     private void keuzeMenu(int keuze) {
@@ -61,7 +61,7 @@ public class GebruikerGegevensBewerken {
                 gegevensWeergeven();
                 break;
             case 0:
-                new GebruikerScherm(huidigeGebruiker).start();
+                new GebruikerScherm(HUIDIGE_GEBRUIKER).start();
                 break;
             default:
                 println("Ongeldige input");
@@ -72,30 +72,30 @@ public class GebruikerGegevensBewerken {
     private void naamWijzigen() {
         log.info("Naam gebruiker wijzigen");
         print("Voornaam: ");
-        huidigeGebruiker.setVoornaam(readLine());
+        HUIDIGE_GEBRUIKER.setVoornaam(readLine());
         print("Achternaam: ");
-        huidigeGebruiker.setAchternaam(readLine());
+        HUIDIGE_GEBRUIKER.setAchternaam(readLine());
     }
 
     private void emailWijzigen() {
         log.info("E-mail gebruiker wijzigen");
-        println("Huidig e-mailadres: " + huidigeGebruiker.getEmail());
+        println("Huidig e-mailadres: " + HUIDIGE_GEBRUIKER.getEmail());
         print("Nieuw e-mailadres: ");
-        huidigeGebruiker.setEmail(readLine());
+        HUIDIGE_GEBRUIKER.setEmail(readLine());
     }
 
     private void wachtwoordWijzigen() {
         log.info("Wachtwoord wijzigen");
         print("Huidig wachtwoord:");
         log.info("Huidig wachtwoord vragen ter controle");
-        if (readLine().equals(huidigeGebruiker.getPassword())){
+        if (readLine().equals(HUIDIGE_GEBRUIKER.getPassword())) {
             log.info("Huidig wachtwoord bevestigd, 2x nieuw wachtwoord vragen");
             print("Nieuw wachtwoord: ");
             String wachtwoord = readLine();
             print("Herhaling wachtwoord:");
-            if (wachtwoord.equals(readLine())){
-                huidigeGebruiker.setPassword(wachtwoord);
-            }else{
+            if (wachtwoord.equals(readLine())) {
+                HUIDIGE_GEBRUIKER.setPassword(wachtwoord);
+            } else {
                 log.error("Nieuwe wachtwoord niet 2x hetzelfde ingevuld");
                 print("Wachtwoorden komen niet overeen.");
             }
@@ -109,22 +109,22 @@ public class GebruikerGegevensBewerken {
 
     private void adresWijzigen() {
         log.info("Adres wijzigen");
-        huidigeGebruiker.setAdres(adresPrompt());
+        HUIDIGE_GEBRUIKER.setAdres(adresPrompt());
     }
 
     private void bezorgwijzeWijzigen() {
         log.info("Bezorgwijze wijzigen");
-        huidigeGebruiker.setBezorgwijzeSet(vraagBezorgWijze());
-        huidigeGebruiker.setAdres(adresVragen(huidigeGebruiker.getBezorgwijzeSet()));
+        HUIDIGE_GEBRUIKER.setBezorgwijzeSet(vraagBezorgWijze());
+        HUIDIGE_GEBRUIKER.setAdres(adresVragen(HUIDIGE_GEBRUIKER.getBezorgwijzeSet()));
     }
 
     private void gegevensWeergeven() {
         log.info("Gebruiker gegevens weergeven");
-        println("Voornaam: " + huidigeGebruiker.getVoornaam());
-        println("Achternaam: " + huidigeGebruiker.getAchternaam());
-        println("E-mail: " + huidigeGebruiker.getEmail());
-        if (huidigeGebruiker.getAdres() != null) println("Adres: " + huidigeGebruiker.getAdres().toString());
-        println("Bezorgwijze: " + huidigeGebruiker.getBezorgwijzeSet());
+        println("Voornaam: " + HUIDIGE_GEBRUIKER.getVoornaam());
+        println("Achternaam: " + HUIDIGE_GEBRUIKER.getAchternaam());
+        println("E-mail: " + HUIDIGE_GEBRUIKER.getEmail());
+        if (HUIDIGE_GEBRUIKER.getAdres() != null) println("Adres: " + HUIDIGE_GEBRUIKER.getAdres().toString());
+        println("Bezorgwijze: " + HUIDIGE_GEBRUIKER.getBezorgwijzeSet());
         start();
     }
 

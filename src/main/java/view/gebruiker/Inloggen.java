@@ -7,7 +7,7 @@ import model.entity.Gebruiker;
 
 import javax.persistence.NoResultException;
 
-import static config.EntityManager.em;
+import static config.EntityManager.EM;
 import static view.View.*;
 
 @Log4j2
@@ -16,20 +16,19 @@ public class Inloggen {
     private String email;
     private String wachtwoord;
     private Gebruiker huidigeGebruiker;
-    private final GebruikersDao gebruikersDao = GebruikersDao.instance(em);
+    private final GebruikersDao GEBRUIKERS_DAO = GebruikersDao.instance(EM);
 
     public void start(){
         log.info("Inloggen gebruiker");
         header("Inloggen");
         getGegevens();
 
-        if(verifiëren(email, wachtwoord, gebruikersDao)){
+        if (verifiëren(email, wachtwoord, GEBRUIKERS_DAO)) {
             log.info("Controleren of gebruiker akkoord is gegaan met algemene voorwaarden");
-            if (huidigeGebruiker.isAkkoordMetVoorwaarde()){
+            if (huidigeGebruiker.isAkkoordMetVoorwaarde()) {
                 log.info("Gebruiker heeft algemene voorwaarde reeds geaccepteerd");
                 naarGebruikerScherm(huidigeGebruiker);
-            }
-            else{
+            } else {
                 log.info("Gebruiker moet algemene voorwaarde nog accepteren");
                 println("U heeft de algemene voorwaarden nog niet geaccepteerd");
                 huidigeGebruiker.setAkkoordMetVoorwaarde(new VoorwaardenScherm().start());

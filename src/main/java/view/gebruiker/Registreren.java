@@ -5,15 +5,15 @@ import lombok.extern.log4j.Log4j2;
 import model.entity.Gebruiker;
 import model.enums.Status;
 
-import static config.EntityManager.em;
+import static config.EntityManager.EM;
 import static model.GenereerWachtwoord.maakWachtwoord;
 import static view.View.*;
 import static view.gebruiker.BezorgwijzeScherm.*;
 
 @Log4j2
 public class Registreren {
-    private final Gebruiker nieuweGebruiker = new Gebruiker();
-    private final GebruikersDao gebruikersDao = new GebruikersDao(em);
+    private final Gebruiker NIEUWE_GEBRUIKER = new Gebruiker();
+    private final GebruikersDao GEBRUIKERS_DAO = new GebruikersDao(EM);
 
     public void nieuweGebruiker() {
 
@@ -21,29 +21,29 @@ public class Registreren {
         header("Registreren nieuwe gebruiker");
 
         print("Voornaam: ");
-        nieuweGebruiker.setVoornaam(readLine());
+        NIEUWE_GEBRUIKER.setVoornaam(readLine());
         print("Achternaam: ");
-        nieuweGebruiker.setAchternaam(readLine());
+        NIEUWE_GEBRUIKER.setAchternaam(readLine());
 
         vraagEmail();
 
-        nieuweGebruiker.setBezorgwijzeSet(vraagBezorgWijze());
+        NIEUWE_GEBRUIKER.setBezorgwijzeSet(vraagBezorgWijze());
 
-        printBezorgwijze(nieuweGebruiker);
+        printBezorgwijze(NIEUWE_GEBRUIKER);
 
-        nieuweGebruiker.setAdres(adresVragen(nieuweGebruiker.getBezorgwijzeSet()));
+        NIEUWE_GEBRUIKER.setAdres(adresVragen(NIEUWE_GEBRUIKER.getBezorgwijzeSet()));
 
-        nieuweGebruiker.setStatus(Status.ACTIEF);
+        NIEUWE_GEBRUIKER.setStatus(Status.ACTIEF);
 
         log.info("Gegenereerd wachtwoord meegeven ipv Email versturen");
-        nieuweGebruiker.setPassword(maakWachtwoord());
+        NIEUWE_GEBRUIKER.setPassword(maakWachtwoord());
 
-        nieuweGebruiker.setAkkoordMetVoorwaarde(new VoorwaardenScherm().start());
+        NIEUWE_GEBRUIKER.setAkkoordMetVoorwaarde(new VoorwaardenScherm().start());
 
-        gebruikersDao.save(nieuweGebruiker);
+        GEBRUIKERS_DAO.save(NIEUWE_GEBRUIKER);
 
         divider();
-        println("Wachtwoord = " + nieuweGebruiker.getPassword());
+        println("Wachtwoord = " + NIEUWE_GEBRUIKER.getPassword());
 
         new Inloggen().start();
     }
@@ -56,8 +56,8 @@ public class Registreren {
 
     private void controleerEmail(String email) {
         if (email.contains("@")) {
-            if (gebruikersDao.existsByEmail(email)) {
-                nieuweGebruiker.setEmail(email);
+            if (GEBRUIKERS_DAO.existsByEmail(email)) {
+                NIEUWE_GEBRUIKER.setEmail(email);
             } else {
                 printErr("Er bestaat al een account met email: " + email);
                 println("");

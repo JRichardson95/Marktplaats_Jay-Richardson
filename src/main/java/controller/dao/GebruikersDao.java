@@ -7,7 +7,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 public class GebruikersDao extends Dao<Gebruiker, Long> {
-    EntityManager entityManager;
+    private EntityManager entityManager;
     private static GebruikersDao instance;
 
     public GebruikersDao(EntityManager entityManager) {

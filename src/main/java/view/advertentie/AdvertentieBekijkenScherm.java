@@ -7,23 +7,23 @@ import model.entity.Gebruiker;
 
 import java.util.List;
 
-import static config.EntityManager.em;
+import static config.EntityManager.EM;
 import static view.View.header;
 
 @Log4j2
 public class AdvertentieBekijkenScherm {
-    private final Gebruiker gebruiker;
-    private final AdvertentieDao advertentieDao = AdvertentieDao.instance(em);
+    private final Gebruiker HUIDIGE_GEBRUIKER;
+    private final AdvertentieDao ADVERTENTIE_DAO = AdvertentieDao.instance(EM);
 
-    public AdvertentieBekijkenScherm(Gebruiker gebruiker) {
-        this.gebruiker = gebruiker;
+    public AdvertentieBekijkenScherm(Gebruiker huidigeGebruiker) {
+        this.HUIDIGE_GEBRUIKER = huidigeGebruiker;
     }
 
-    public void eigenAdvertentiesBekijken(){
+    public void eigenAdvertentiesBekijken() {
         log.info("Advertenties van de gebruiker weergeven");
-        header("Advertenties van: " + gebruiker.getNaam());
-        List<Advertentie> advertentieList = advertentieDao.findByGebruikerId(gebruiker.getId());
+        header("Advertenties van: " + HUIDIGE_GEBRUIKER.getNaam());
+        List<Advertentie> advertentieList = ADVERTENTIE_DAO.findByGebruikerId(HUIDIGE_GEBRUIKER.getId());
         advertentieList.forEach(System.out::println);
-        new view.gebruiker.GebruikerScherm(gebruiker);
+        new view.gebruiker.GebruikerScherm(HUIDIGE_GEBRUIKER);
     }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class AdvertentieDao extends Dao<Advertentie, Long> {
 
-    EntityManager entityManager;
+    private EntityManager entityManager;
     private static AdvertentieDao instance;
 
     public AdvertentieDao(EntityManager entityManager) {

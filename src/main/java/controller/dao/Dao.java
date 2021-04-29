@@ -6,29 +6,31 @@ import javax.persistence.EntityManager;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
-public abstract class Dao <T extends Identifiable<I>, I>{
-    private final EntityManager entityManager;
+public abstract class Dao<T extends Identifiable<I>, I> {
+    private final EntityManager ENTITY_MANAGER;
 
-    public Dao(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public Dao(EntityManager ENTITY_MANAGER) {
+        this.ENTITY_MANAGER = ENTITY_MANAGER;
     }
 
-    public T find(I id){ return entityManager.find(T(), id);}
+    public T find(I id) {
+        return ENTITY_MANAGER.find(T(), id);
+    }
 
     public List<T> findAll() {
-        return entityManager.createNamedQuery(typeSimple() + ".findAll", T()).getResultList(); // JPQL Java Persistence Query Language
+        return ENTITY_MANAGER.createNamedQuery(typeSimple() + ".findAll", T()).getResultList(); // JPQL Java Persistence Query Language
     }
 
     public void save(T p) {
-        entityManager.getTransaction().begin();
-        entityManager.persist(p);
-        entityManager.getTransaction().commit();
+        ENTITY_MANAGER.getTransaction().begin();
+        ENTITY_MANAGER.persist(p);
+        ENTITY_MANAGER.getTransaction().commit();
     }
 
     public T update(T e) {
-        entityManager.getTransaction().begin();
-        T mergedT = entityManager.merge(e);
-        entityManager.getTransaction().commit();
+        ENTITY_MANAGER.getTransaction().begin();
+        T mergedT = ENTITY_MANAGER.merge(e);
+        ENTITY_MANAGER.getTransaction().commit();
         return mergedT;
     }
 

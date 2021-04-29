@@ -13,18 +13,18 @@ import java.util.Set;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static config.EntityManager.em;
+import static config.EntityManager.EM;
 import static view.View.*;
 
 @Log4j2
 public class AdvertentieAanmakenScherm {
-    private final Gebruiker huidigeGebruiker;
-    private final AdvertentieDao advertentieDao = new AdvertentieDao(em);
+    private final Gebruiker HUIDIGE_GEBRUIKER;
+    private final AdvertentieDao ADVERTENTIE_DAO = new AdvertentieDao(EM);
     private Advertentie advertentie = new Advertentie();
     private Set<Bezorgwijze> bezorgwijzeSet = new HashSet<>();
 
     public AdvertentieAanmakenScherm(Gebruiker huidigeGebruiker) {
-        this.huidigeGebruiker = huidigeGebruiker;
+        this.HUIDIGE_GEBRUIKER = huidigeGebruiker;
     }
 
     public void start() {
@@ -32,13 +32,13 @@ public class AdvertentieAanmakenScherm {
         header("Advertentie aanmaken");
 
         log.info("Ingelogde gebruiker toevoegen aan advertentie");
-        advertentie.setGebruiker(huidigeGebruiker);
+        advertentie.setGebruiker(HUIDIGE_GEBRUIKER);
 
         log.info("Gegevens voor advertentie opvragen");
         getGegevens();
 
         log.info("Terug naar hoofdscherm gebruiker");
-        new GebruikerScherm(huidigeGebruiker).start();
+        new GebruikerScherm(HUIDIGE_GEBRUIKER).start();
     }
 
     public void getGegevens() {
@@ -64,7 +64,7 @@ public class AdvertentieAanmakenScherm {
         printPointer();
         advertentie.setOndersteundeBezorgwijze(selecteerBezorgwijze(readLine()));
 
-        advertentieDao.save(advertentie);
+        ADVERTENTIE_DAO.save(advertentie);
     }
 
     protected void toonCategorieën() {
@@ -96,7 +96,7 @@ public class AdvertentieAanmakenScherm {
     protected void toonBezorgwijze() {
         log.info("Door gebruiker ondersteunde bezorgwijze weergeven");
         println("Welk van uw bezorgwijze wilt u voor deze advertentie ondersteunen:");
-        huidigeGebruiker.getBezorgwijzeSet().forEach(System.out::println);
+        HUIDIGE_GEBRUIKER.getBezorgwijzeSet().forEach(System.out::println);
         println("Gescheiden door een spatie");
         divider();
     }
@@ -111,7 +111,7 @@ public class AdvertentieAanmakenScherm {
 
     protected void controleerBezorgwijze(Bezorgwijze bezorgwijze) {
         log.info("Controleren of gekozen bezorgwijze in het account van de gebruiker wordt ondersteund");
-        if (huidigeGebruiker.getBezorgwijzeSet().contains(bezorgwijze)) {
+        if (HUIDIGE_GEBRUIKER.getBezorgwijzeSet().contains(bezorgwijze)) {
             bezorgwijzeSet.add(bezorgwijze);
         } else {
             log.error("Niet ondersteunde bezorgwijze gekozen");
