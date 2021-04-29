@@ -7,7 +7,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 public abstract class Dao <T extends Identifiable<I>, I>{
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     public Dao(EntityManager entityManager) {
         this.entityManager = entityManager;

@@ -4,8 +4,6 @@ import controller.dao.GebruikersDao;
 import exception.GebruikerNietGevonden;
 import lombok.extern.log4j.Log4j2;
 import model.entity.Gebruiker;
-import view.gebruiker.GebruikerScherm;
-import view.gebruiker.VoorwaardenScherm;
 
 import javax.persistence.NoResultException;
 

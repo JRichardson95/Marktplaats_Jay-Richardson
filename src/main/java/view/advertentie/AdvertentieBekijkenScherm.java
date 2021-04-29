@@ -1,14 +1,13 @@
 package view.advertentie;
 
 import controller.dao.AdvertentieDao;
-import controller.dao.GebruikersDao;
 import model.entity.Advertentie;
 import model.entity.Gebruiker;
 
 import java.util.List;
 
 import static config.EntityManager.em;
-import static view.View.*;
+import static view.View.header;
 
 public class AdvertentieBekijkenScherm {
     private final Gebruiker gebruiker;

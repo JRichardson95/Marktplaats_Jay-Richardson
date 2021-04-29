@@ -5,13 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import model.Adres;
-
 import model.Bezorgwijze;
 import model.Status;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import java.util.HashSet;
 import java.util.Set;
 
 @Builder

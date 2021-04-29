@@ -7,11 +7,12 @@ import model.entity.Gebruiker;
 import static config.EntityManager.em;
 import static view.View.*;
 import static view.gebruiker.AdresScherm.adresPrompt;
-import static view.gebruiker.BezorgwijzeScherm.*;
+import static view.gebruiker.BezorgwijzeScherm.adresVragen;
+import static view.gebruiker.BezorgwijzeScherm.vraagBezorgWijze;
 
 @Log4j2
 public class GebruikerGegevensBewerken {
-    private Gebruiker huidigeGebruiker;
+    private final Gebruiker huidigeGebruiker;
     private final GebruikersDao gebruikersDao = new GebruikersDao(em);
 
     public GebruikerGegevensBewerken(Gebruiker huidigeGebruiker) {

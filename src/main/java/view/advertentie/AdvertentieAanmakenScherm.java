@@ -80,7 +80,7 @@ public class AdvertentieAanmakenScherm {
 
     private void toonBezorgwijze() {
         println("Welk van uw bezorgwijze wilt u voor deze advertentie ondersteunen:");
-        huidigeGebruiker.getBezorgwijzeSet().forEach((b) -> System.out.println(b));
+        huidigeGebruiker.getBezorgwijzeSet().forEach(System.out::println);
         println("Gescheiden door een spatie");
         divider();
     }
