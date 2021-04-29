@@ -1,8 +1,8 @@
 package view.gebruiker;
 
 import model.Adres;
-import model.Bezorgwijze;
 import model.entity.Gebruiker;
+import model.enums.Bezorgwijze;
 
 import java.util.Arrays;
 import java.util.HashSet;

@@ -1,7 +1,7 @@
 package view.gebruiker;
 
 import model.Adres;
-import model.Bezorgwijze;
+import model.enums.Bezorgwijze;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 

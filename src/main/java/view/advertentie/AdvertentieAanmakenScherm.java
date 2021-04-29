@@ -2,10 +2,10 @@ package view.advertentie;
 
 import controller.dao.AdvertentieDao;
 import lombok.extern.log4j.Log4j2;
-import model.Bezorgwijze;
-import model.Categorie;
 import model.entity.Advertentie;
 import model.entity.Gebruiker;
+import model.enums.Bezorgwijze;
+import model.enums.Categorie;
 import view.gebruiker.GebruikerScherm;
 
 import java.util.HashSet;

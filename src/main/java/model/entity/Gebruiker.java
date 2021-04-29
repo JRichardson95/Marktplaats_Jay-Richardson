@@ -5,8 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import model.Adres;
-import model.Bezorgwijze;
-import model.Status;
+import model.enums.Bezorgwijze;
+import model.enums.Status;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

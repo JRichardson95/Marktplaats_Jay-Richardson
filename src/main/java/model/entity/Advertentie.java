@@ -1,8 +1,8 @@
 package model.entity;
 
 import lombok.Data;
-import model.Bezorgwijze;
-import model.Categorie;
+import model.enums.Bezorgwijze;
+import model.enums.Categorie;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

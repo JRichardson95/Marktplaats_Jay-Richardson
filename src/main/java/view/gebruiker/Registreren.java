@@ -2,8 +2,8 @@ package view.gebruiker;
 
 import controller.dao.GebruikersDao;
 import lombok.extern.log4j.Log4j2;
-import model.Status;
 import model.entity.Gebruiker;
+import model.enums.Status;
 
 import static config.EntityManager.em;
 import static model.GenereerWachtwoord.maakWachtwoord;

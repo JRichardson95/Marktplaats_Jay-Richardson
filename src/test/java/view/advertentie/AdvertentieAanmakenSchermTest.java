@@ -1,8 +1,8 @@
 package view.advertentie;
 
-import model.Bezorgwijze;
-import model.Categorie;
 import model.entity.Gebruiker;
+import model.enums.Bezorgwijze;
+import model.enums.Categorie;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
