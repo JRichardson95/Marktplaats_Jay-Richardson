@@ -22,8 +22,8 @@ public class BeginScherm {
         header("Welkom op marktplaats");
         println("Wat wilt u doen:");
         println("" +
-                "1: registreren\n" +
-                "2: inloggen");
+                "1: Registreren\n" +
+                "2: Inloggen");
         divider();
     }
 

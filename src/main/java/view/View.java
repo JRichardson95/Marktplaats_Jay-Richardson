@@ -10,10 +10,13 @@ public class View {
     public static void print(String input){
         System.out.print(input);
     }
-    public static void println(String input){
+    public static void println(String input) {
         System.out.println(input);
     }
-    public static void printErr(String input){ System.err.println(input); }
+
+    public static void printErr(String input) {
+        System.err.println("Fout: \n" + input);
+    }
 
     public static void printPointer(){
         final String ANSI_RESET = "\u001B[0m";

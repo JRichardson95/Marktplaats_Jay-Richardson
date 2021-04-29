@@ -8,8 +8,8 @@ public class VoorwaardenScherm {
     public boolean start(){
         log.info("Voorwaarde scherm");
         header("Voorwaarde");
-
         println("algemene voorwaarde");
+        divider();
         println("Gaat u akkoord met de voorwaarde?");
         print("Ja/Nee: ");
         return (akkoordMetVoorwaarde(readLine()));

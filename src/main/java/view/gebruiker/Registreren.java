@@ -6,16 +6,17 @@ import model.Status;
 import model.entity.Gebruiker;
 
 import static config.EntityManager.em;
-import static view.View.*;
 import static model.GenereerWachtwoord.maakWachtwoord;
+import static view.View.*;
 import static view.gebruiker.BezorgwijzeScherm.*;
 
 @Log4j2
 public class Registreren {
     private final Gebruiker nieuweGebruiker = new Gebruiker();
+    private final GebruikersDao gebruikersDao = new GebruikersDao(em);
 
     public void nieuweGebruiker() {
-        GebruikersDao gebruikersDao = new GebruikersDao(em);
+
 
         header("Registreren nieuwe gebruiker");
 
@@ -23,9 +24,8 @@ public class Registreren {
         nieuweGebruiker.setVoornaam(readLine());
         print("Achternaam: ");
         nieuweGebruiker.setAchternaam(readLine());
-        print("Email: ");
-        nieuweGebruiker.setEmail(readLine());
-        divider();
+
+        vraagEmail();
 
         nieuweGebruiker.setBezorgwijzeSet(vraagBezorgWijze());
 
@@ -47,4 +47,21 @@ public class Registreren {
 
         new Inloggen().start();
     }
+
+    private void vraagEmail() {
+        print("Email: ");
+        controleerEmail(readLine());
+        divider();
+    }
+
+    private void controleerEmail(String email) {
+        if (gebruikersDao.existsByEmail(email)) {
+            nieuweGebruiker.setEmail(email);
+        } else {
+            printErr("Er bestaat al een account met email: " + email);
+            println("");
+            vraagEmail();
+        }
+    }
+
 }
