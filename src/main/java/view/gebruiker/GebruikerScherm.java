@@ -42,6 +42,7 @@ public class GebruikerScherm {
                 break;
             case 3:
                 new AdvertentieBekijkenScherm(HUIDIGE_GEBRUIKER).eigenAdvertentiesBekijken();
+                start();
                 break;
             case 0:
                 new BeginScherm().start();

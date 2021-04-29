@@ -24,6 +24,5 @@ public class AdvertentieBekijkenScherm {
         header("Advertenties van: " + HUIDIGE_GEBRUIKER.getNaam());
         List<Advertentie> advertentieList = ADVERTENTIE_DAO.findByGebruikerId(HUIDIGE_GEBRUIKER.getId());
         advertentieList.forEach(System.out::println);
-        new view.gebruiker.GebruikerScherm(HUIDIGE_GEBRUIKER);
     }
 }
